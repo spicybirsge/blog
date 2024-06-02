@@ -12,9 +12,15 @@ router.post("/blog", authorize , async(req, res) => {
             return res.status(400).json({success: false, message: "title, description, content is required", code: 400});
         }
 
-        const ID = slugify(title, {
+        let ID = slugify(title, {
             lower: true
         });
+
+        const isIDTaken = await blogPosts.findOne({_id: ID});
+
+        if(isIDTaken) {
+            ID = ID+"-"+Date.now() 
+        }
 
         const blogPostObject = {
             _id: ID,
