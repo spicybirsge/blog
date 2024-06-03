@@ -8,8 +8,8 @@ export const authenticate = async () => {
   const BACKEND_URL = vars.BACKEND_URL;
 
   if (!token) {
-    setUnauthenticated();
-    setCompleted();
+    loggedIn.setState({ loggedIn: false });
+    loaded.setState({ loaded: true });
     return;
   }
 
