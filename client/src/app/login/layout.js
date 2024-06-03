@@ -1,12 +1,13 @@
 import { Inter } from "next/font/google";
-import { ConfigProvider } from "antd";
+
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+import { ConfigProvider } from "antd";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'Blog - Shaheer Ahamed',
-  description: 'Hi I am Shaheer Ahamed a full-stack web and app developer. You can read my blog here.',
+  title: 'Admin Login',
+  description: 'Login as an admin',
   icons: {
     icon: '/logo.png',
     shortcut: '/logo.png',
@@ -17,8 +18,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Blog - Shaheer Ahamed',
-    description: 'Hi I am Shaheer Ahamed a full-stack web and app developer. You can read my blog here.',
+    title: 'Admin Login',
+    description: 'Login as an admin',
   
     siteName: "Shaheer Ahamed's Blog",
     images: [
@@ -34,20 +35,21 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Shaheer Ahamed's Blog",
-    description: 'Hi I am Shaheer Ahamed a full-stack web and app developer. You can read my blog here.',
+    title: "Admin Login",
+    description: 'Login as an admin',
     images: ['/logo.png'],
   },
 };
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>     <ConfigProvider
-     theme={{
-      token: {
-        colorPrimary: '#4bd26f',
-      },
-    }}><AntdRegistry>{children}</AntdRegistry></ConfigProvider></body>
-    </html>
-  );
-}
+    return (
+      <html lang="en">
+        <body className={inter.className}>     <ConfigProvider
+       theme={{
+        token: {
+          colorPrimary: '#4bd26f',
+        },
+      }}><AntdRegistry>{children}</AntdRegistry></ConfigProvider></body>
+      </html>
+    );
+  }
+  
