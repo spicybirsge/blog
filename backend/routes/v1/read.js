@@ -50,4 +50,31 @@ try {
 }
 })
 
+router.get("/all-blogs", async (req, res) => {
+    try {
+        const blogs = await blogPosts.find();
+        const allBlogPosts = []
+        for(const bp of blogs) {
+              const blogPostObject = {
+                _id: bp._id,
+                title: bp.title,
+                description: bp.description,
+                content: bp.content,
+                views: bp.views.length,
+                createdAt: bp.createdAt,
+                lastedEdited: bp.lastEdited
+
+              }
+
+               allBlogPosts.push(blogPostObject)
+        }
+
+        return res.status(200).json({success: true, message: "Here are the blog posts", data: allBlogPosts, code: 200})
+    } catch(e) {
+        console.error(e)
+    return res.status(500).json({success: false, message: "Internal server error", code: 500})
+    
+    }
+})
+
 module.exports = router;

@@ -23,7 +23,7 @@ export default function Page () {
           authenticate();
         }
        
-      }, []);
+      }, [isLoaded]);
     
       if (!isLoaded) {
         return <LoadingComponent  />
@@ -96,7 +96,7 @@ export default function Page () {
               </Form.Item>
               <Form.Item>
                   <Button type="primary" htmlType="submit" loading={butLoading}>
-                      Submit
+                      Login
                   </Button>
               </Form.Item>
               <Form.Item style={{
