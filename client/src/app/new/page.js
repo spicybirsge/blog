@@ -34,7 +34,7 @@ export default function Page() {
           messageApi.error("Error while authenticating (see console for more info)")
         
         }
-    }, [loaded])
+    }, [isLoaded])
 
     if(!isLoaded) {
         return <LoadingComponent></LoadingComponent>

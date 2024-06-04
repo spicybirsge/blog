@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { authenticate } from "@/functions/authenticate";
 import LoadingComponent from "@/components/LoadingComponent";
 import Navbar from "@/components/NavBar";
-import {Typography,  Divider, Spin, message} from 'antd'
+import {Typography,  Divider, Spin, message, Space} from 'antd'
 const {Title, Paragraph, Text} = Typography;
 import './global.css'
 import PostCard from "@/components/PostCard";
@@ -67,9 +67,10 @@ const [messageApi, contextHolder] = message.useMessage();
     <Divider></Divider>
     <Title level={2} style={{"textAlign": "center"}}>Posts</Title>
     <Spin spinning={postFetching} size="large">
+    <Space direction="vertical" style={{"width" : "100%"}}>
     {posts.map((blogpost)=> (<>
-      <PostCard createdAt={blogpost.createdAt} title={blogpost.title} description={blogpost.description} loggedIn={isLoggedIn} id={blogpost._id} views={blogpost.views}></PostCard> <Divider/></>
-    ) ) }{posts.length === 0 ? <Paragraph style={{"textAlign": "center"}}>No posts yet, come back later?</Paragraph> : <></>}</Spin>
+      <PostCard  createdAt={blogpost.createdAt} title={blogpost.title} description={blogpost.description} loggedIn={isLoggedIn} id={blogpost._id} views={blogpost.views}></PostCard> </>
+    ) ) }{posts.length === 0 ? <Paragraph style={{"textAlign": "center"}}>No posts yet, come back later?</Paragraph> : <></>}</Space></Spin>
 
    </div></>;
 }

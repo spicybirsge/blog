@@ -39,7 +39,7 @@ export const metadata = {
     images: ['/logo.png'],
   },
 };
-export default function RootLayout({ children }) {
+export default function NewPostLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>     <ConfigProvider
