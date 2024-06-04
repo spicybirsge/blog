@@ -1,4 +1,4 @@
 const vars = { 
-    'BACKEND_URL' : 'http://localhost:7060'
+    'BACKEND_URL' : 'https://shaheerahamedblogapi.vercel.app'
 }
 export default vars
