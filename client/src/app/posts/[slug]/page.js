@@ -81,8 +81,8 @@ export default function Page({ params }) {
   <Space >
     <Paragraph><Text strong> <Avatar src={"/avatar.png"} size={25}></Avatar> Shaheer Ahamed</Text></Paragraph> 
   </Space>
-  <Divider></Divider>
-  <MDEditor.Markdown source={post?.content}  />
+  <Divider></Divider><div data-color-mode="light">
+  <MDEditor.Markdown source={post?.content}  /></div>
   <Divider></Divider>
   <Paragraph>Last edited at <Text strong>{timeStampToDate(post?.lastEdited)}</Text></Paragraph>
    {isLoggedIn ? <Link href={"/manage/"+params.slug}><Tooltip title="Manage post"><Button type="primary" icon={<EditOutlined/>}></Button></Tooltip></Link> : <></>} </Spin></div>
