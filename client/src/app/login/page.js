@@ -97,7 +97,7 @@ export default function Page () {
                       },
                   ]}
               >
-                  <Input />
+                  <Input type="password"/>
               </Form.Item>
               <Form.Item>
                   <Button type="primary" htmlType="submit" loading={butLoading}>

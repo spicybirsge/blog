@@ -65,10 +65,15 @@ export default function Page() {
         if (!isLoaded) {
             return <LoadingComponent/>
           }
+
+          function logOut() {
+            window.localStorage.removeItem("token")
+            loggedIn.setState({ loggedIn: false });
+          }
     return <>{contextHolder}<Navbar loggedIn={isLoggedIn}></Navbar>
     <div className="container">
         <Title level={2}>Welcome to dashboard!</Title>
-        <Paragraph>Here you can manage all your blog posts as you wish! Found a bug? report it at <a href="https://github.com/spicybirsge/blog/issues" target="_blank">github</a>. Create a  <Link href={"/new"}>new blog post</Link></Paragraph>
+        <Paragraph>Here you can manage all your blog posts as you wish! Found a bug? report it at <a href="https://github.com/spicybirsge/blog/issues" target="_blank">github</a>. Create a  <Link href={"/new"}>new blog post</Link> or <a onClick={logOut}>logout</a></Paragraph>
         <Divider></Divider>
         <Title level={2} style={{"textAlign": "center"}}>Posts</Title>
         <Spin spinning={postFetching} size="large">
