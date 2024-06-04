@@ -77,7 +77,9 @@ export default function Page({ params }) {
    <Button type="text" icon={<ArrowLeftOutlined />} onClick={()=> {back()}}></Button>
         <Title level={2}>{post?.title}</Title>
   <Paragraph strong>{post?.description}</Paragraph>
-  <Paragraph>Post on <Text strong>{timeStampToDate(post?.createdAt)}</Text></Paragraph> 
+  <Paragraph>Posted on <Text strong>{timeStampToDate(post?.createdAt)}</Text> <Divider type="vertical"></Divider> <Text strong>{post?.views} views</Text></Paragraph> 
+  
+ 
   <Space >
     <Paragraph><Text strong> <Avatar src={"/avatar.png"} size={25}></Avatar> Shaheer Ahamed</Text></Paragraph> 
   </Space>
