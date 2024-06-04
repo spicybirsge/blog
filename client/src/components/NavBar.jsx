@@ -2,16 +2,26 @@
 
 import { Menu } from 'antd';
 import Link from 'next/link';
-import { HomeOutlined, InfoCircleOutlined, DashboardOutlined } from '@ant-design/icons';
-
+import { HomeOutlined, InfoCircleOutlined, DashboardOutlined,BranchesOutlined } from '@ant-design/icons';
+import { useEffect, useState } from 'react';
 export default function NavBar(props) {
-  const pathname = window.location.pathname;
+  const [pathname, setPathname] = useState(window.location.pathname);
+
+  useEffect(() => {
+  
+setPathname(window.location.pathname)
+  }, [window.location.pathname])
 
   const handleMenuItemClick = (e) => {
     
     if (e.key === 'about') {
    
       window.open('https://shaheerahamed.vercel.app', '_blank');
+    }
+
+    if (e.key === 'source') {
+   
+      window.open('https://github.com/spicybirsge/blog', '_blank');
     }
   };
 
@@ -28,6 +38,9 @@ export default function NavBar(props) {
         </Menu.Item>
         <Menu.Item key="about" icon={<InfoCircleOutlined />} onClick={handleMenuItemClick}>
           About
+        </Menu.Item>
+        <Menu.Item key="source" icon={<BranchesOutlined />} onClick={handleMenuItemClick}>
+          Source
         </Menu.Item>
         {props.loggedIn?  <Menu.Item key="/dashboard" icon={<DashboardOutlined/>} >
         <Link href="/dashboard"> Dashboard</Link>

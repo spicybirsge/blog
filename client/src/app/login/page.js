@@ -19,10 +19,15 @@ export default function Page () {
     
     
     useEffect(() => {
+      try {
         if (!isLoaded) {
           authenticate();
         }
-       
+      } catch(e) {
+        console.error(e)
+        messageApi.error("Error while authenticating (see console for more info)")
+      
+      }
       }, [isLoaded]);
     
       if (!isLoaded) {

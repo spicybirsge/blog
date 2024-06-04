@@ -69,7 +69,9 @@ router.get("/all-blogs", async (req, res) => {
                allBlogPosts.push(blogPostObject)
         }
 
-        return res.status(200).json({success: true, message: "Here are the blog posts", data: allBlogPosts, code: 200})
+        const sortBlogPosts = allBlogPosts.sort((a,b ) => parseFloat(b.createdAt) - parseFloat(a.createdAt))
+
+        return res.status(200).json({success: true, message: "Here are the blog posts", data: sortBlogPosts, code: 200})
     } catch(e) {
         console.error(e)
     return res.status(500).json({success: false, message: "Internal server error", code: 500})

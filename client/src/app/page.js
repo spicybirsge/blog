@@ -3,7 +3,6 @@ import { loggedIn, loaded } from "@/store";
 import { useEffect, useState } from "react";
 import { authenticate } from "@/functions/authenticate";
 import LoadingComponent from "@/components/LoadingComponent";
-import {Card } from 'antd';
 import Navbar from "@/components/NavBar";
 import {Typography,  Divider, Spin, message} from 'antd'
 const {Title, Paragraph, Text} = Typography;
@@ -17,12 +16,17 @@ export default function Page() {
 const [postFetching, setPostsFetching] = useState(true)
 const [messageApi, contextHolder] = message.useMessage();
   useEffect(() => {
-   
+    try {
     if (!isLoaded) {
       authenticate();
     }
+} catch(e) {
+  console.error(e)
+  messageApi.error("Error while authenticating (see console for more info)")
 
+}
     async function fetchPosts() {
+      try {
       const url = vars.BACKEND_URL+"/api/v1/read/all-blogs";
       const request = await fetch(url, {
         method: 'GET'
@@ -35,9 +39,13 @@ const [messageApi, contextHolder] = message.useMessage();
         setPosts(response.data)
         return;
       } else {
-      return messageApi.success("Error fetching posts")
+        console.error(response.message)
+      return messageApi.error("Error fetching posts (see console for more info)")
       }
-     
+    } catch(e) {
+      console.error(e)
+      messageApi.error("Error while fetching posts (see console for more info)")
+    }
         
     }
     if(isLoaded) {
