@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import { authenticate } from "@/functions/authenticate";
 import LoadingComponent from "@/components/LoadingComponent";
 import Navbar from "@/components/NavBar";
-import {Typography,  Divider, Spin, message, Input, Button} from 'antd'
+import {Typography,  Divider, Spin, message, Input, Button, Space} from 'antd'
 const {Title, Paragraph, Text} = Typography;
 import { useRouter } from "next/navigation";
 import MDEditor from '@uiw/react-md-editor';
 import '../global.css'
 
 import vars from "@/variables/vars";
-import Link from "next/link";
+
 export default function Page() {
     const[title, setTitle] = useState(null)
     const [description, setDescription] = useState(null)
@@ -34,7 +34,7 @@ export default function Page() {
           messageApi.error("Error while authenticating (see console for more info)")
         
         }
-    }, [])
+    }, [loaded])
 
     if(!isLoaded) {
         return <LoadingComponent></LoadingComponent>
@@ -77,9 +77,9 @@ export default function Page() {
         if(response.success) {
             setCreating(false)
             messageApi.success("Blog post created taking you there in 3 seconds")
-            setTimeout(router.push("/posts/"+response.data._id, {
+            setTimeout(() => {router.push("/posts/"+response.data._id, {
                 scroll: false
-            }), 3000)
+            })}, 3000)
             return;
         } else {
             setCreating(false)
@@ -98,8 +98,8 @@ export default function Page() {
         value={content}
         onChange={setContent}
       />
-
-      <Button style={{marginTop: "18px"}} type="primary" onClick={createBlogPost} loading={creating}>Create Blog</Button>
+<Space align="baseline" direction="horizontal" >  
+      <Button style={{marginTop: "18px"}} type="primary" onClick={createBlogPost} loading={creating}>Create Blog</Button></Space>
       
      </div></>
 }
