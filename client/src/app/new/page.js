@@ -94,10 +94,11 @@ export default function Page() {
        <Title level={3}>Blog Description</Title>
        <Input value={description} onChange={(e) => {setDescription(e.target.value)}}></Input>
         <Title level={3}>Blog Content</Title>
+        <div data-color-mode="light">
     <MDEditor
         value={content}
         onChange={setContent}
-      />
+      /></div>
 <Space align="baseline" direction="horizontal" >  
       <Button style={{marginTop: "18px"}} type="primary" onClick={createBlogPost} loading={creating}>Create Blog</Button></Space>
       
