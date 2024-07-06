@@ -15,18 +15,19 @@ export default function PostCard(props) {
         ":visited": {
           color: "inherit",
         },
-      }}><Card>
+      }}><Card hoverable bordered >
+         
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }}>
       <Avatar src={"/avatar.png"} size={25} />
       <div style={{ marginLeft: 16 }}>
-        <Title level={4}>Shaheer Ahamed</Title>
+        <Title level={4} style={{margin: 0}}>Shaheer Ahamed</Title>
         <Text>Posted on {timeStampToDate(props.createdAt)}</Text>
       </div>
     </div>
-    <Title level={3}>{props.title}</Title>
-    <Paragraph style={{ marginTop: 16 }}>{props.description}</Paragraph><div>
-    <Tooltip title={props.views+" views"}><Text><EyeOutlined /> {props.views}</Text></Tooltip>
-    {props.loggedIn ? <Tooltip title="Manage post"><Link href={"/manage/"+props.id}><Button type="text" icon={<EditOutlined />}></Button></Link></Tooltip>  : <></>}
+    <Title level={4} style={{margin: 0}}>{props.title}</Title>
+    <Paragraph style={{ marginTop: 5, marginBottom:5}}>{props.description}</Paragraph><div>
+    <Tooltip title={props.views+" views"}><Text ><EyeOutlined /> {props.views}</Text></Tooltip>
+    {props.loggedIn ? <Tooltip title="Manage post" ><Link href={"/manage/"+props.id}><Button  type="text" icon={<EditOutlined />}></Button></Link></Tooltip>  : <></>}
    
 
     </div>
