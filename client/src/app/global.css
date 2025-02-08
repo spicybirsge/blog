@@ -6,10 +6,28 @@ body{
  
   
   .container {
-    padding: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 60%;
+    margin: 0 auto;  
+    padding: 10px;
+ 
+    border-radius: 8px;
    
-    
+}
+
+/* For tablets */
+@media (max-width: 900px) {
+    .container {
+      max-width: 90%;
+    }
+}
+
+/* For phones */
+@media (max-width: 480px) {
+    .container {
+      max-width: 95%;
+    }
   }
+
+  
+  
   

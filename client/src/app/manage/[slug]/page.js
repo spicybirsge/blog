@@ -135,8 +135,10 @@ export default function Page({ params }) {
             }
         
       }
-    return <>{contextHolder}<Navbar loggedIn={isLoggedIn}></Navbar>
-    <div className="container">{exist?  <Spin size="large" spinning={fetching}>
+    return <>{contextHolder}
+    <div className="container">
+    <Navbar loggedIn={isLoggedIn}></Navbar>
+        {exist?  <Spin size="large" spinning={fetching}>
         <Title level={3}>Blog Title</Title>
        <Input value={title} onChange={(e) => {setTitle(e.target.value)}}></Input>
        <Title level={3}>Blog Description</Title>

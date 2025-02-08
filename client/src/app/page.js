@@ -60,8 +60,9 @@ const [messageApi, contextHolder] = message.useMessage();
     return <LoadingComponent/>
   }
 
-  return <>{contextHolder}<Navbar loggedIn={isLoggedIn}></Navbar>
+  return <> {contextHolder}
   <div className="container">
+ <Navbar loggedIn={isLoggedIn}></Navbar>
     <Title level={2}>Shaheer Ahamed's Blog</Title>
     <Paragraph>Hi I am Shaheer Ahamed a full-stack web and app developer. You can read my blog posts here. Want to contact me? message me through <a href="https://discord.com/users/818903544723406858" target="_blank">discord</a>.</Paragraph>
     <Divider></Divider>

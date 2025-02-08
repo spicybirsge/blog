@@ -86,9 +86,9 @@ export default function Page() {
             messageApi.error(response.message)
         }
       }
-    return <>{contextHolder}<Navbar loggedIn={isLoggedIn}></Navbar>
+    return <>{contextHolder}
     <div className="container">
-  
+    <Navbar loggedIn={isLoggedIn}></Navbar>
         <Title level={3}>Blog Title</Title>
        <Input value={title} onChange={(e) => {setTitle(e.target.value)}}></Input>
        <Title level={3}>Blog Description</Title>

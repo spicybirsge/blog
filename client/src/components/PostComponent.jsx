@@ -72,8 +72,8 @@ export default function Page({ params }) {
         return <LoadingComponent></LoadingComponent>
     }
  
-    return <>{contextHolder}<Navbar loggedIn={isLoggedIn}></Navbar>
-    <div className="container"><Spin spinning={fetching} size="large">
+    return <>{contextHolder}
+    <div className="container"><Navbar loggedIn={isLoggedIn}></Navbar><Spin spinning={fetching} size="large">
    <Button type="text" icon={<ArrowLeftOutlined />} onClick={()=> {back()}}></Button>
         <Title level={2}>{post?.title}</Title>
   <Paragraph strong>{post?.description}</Paragraph>

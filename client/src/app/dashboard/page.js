@@ -70,8 +70,9 @@ export default function Page() {
             window.localStorage.removeItem("token")
             loggedIn.setState({ loggedIn: false });
           }
-    return <>{contextHolder}<Navbar loggedIn={isLoggedIn}></Navbar>
+    return <>{contextHolder}
     <div className="container">
+    <Navbar loggedIn={isLoggedIn}></Navbar>
         <Title level={2}>Welcome to dashboard!</Title>
         <Paragraph>Here you can manage all your blog posts as you wish! Found a bug? report it at <a href="https://github.com/spicybirsge/blog/issues" target="_blank">github</a>. Create a  <Link href={"/new"}>new blog post</Link> or <a onClick={logOut}>logout</a></Paragraph>
         <Divider></Divider>
