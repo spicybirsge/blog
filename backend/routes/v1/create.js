@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 const slugify = require("slugify");
 const blogPosts = require("../../database/schemas/blogPosts");
-const authorize = require("../../middleware/authorize")
+const authorize = require("../../middleware/authorize");
+const {WebhookClient} = require("discord.js")
+
+
 
 router.post("/blog", authorize , async(req, res) => {
     try {
@@ -34,6 +37,14 @@ router.post("/blog", authorize , async(req, res) => {
         }
 
         await blogPosts.create(blogPostObject);
+        const webhookToken = process.env.WEBHOOK_URL;
+
+        if(webhookToken) {
+            const webhookClient = new WebhookClient({ url: webhookToken, avatarURL: `https://cdn.discordapp.com/avatars/818903544723406858/fab5fad946feea36277f3c3e8b2cfe8f.png`, username: 'Shaheer' });
+            const url = `https://blog-shaheerahamed.vercel.app/posts/${ID}`
+            webhookClient.send({content: `**New Post**\n${url}`})
+        }
+        
         return res.status(200).json({success: true, message: "Blog post created", data: blogPostObject, code: 200})
 
 
