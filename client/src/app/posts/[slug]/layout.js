@@ -11,7 +11,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const request = await fetch(url, {
       method: 'GET',
       next: {
-        revalidate: 60
+        revalidate: 0
       }
   })
 
