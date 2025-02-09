@@ -38,7 +38,8 @@ try {
         content: blog.content,
         views: blog.views.length,
         createdAt: blog.createdAt,
-        lastEdited: blog.lastEdited
+        lastEdited: blog.lastEdited,
+        imageURL: blog.imageURL
     }
 
    return res.status(200).json({success: true, message: "Blog found", data: blogPostObject, code: 200})
@@ -62,7 +63,8 @@ router.get("/all-blogs", async (req, res) => {
                 content: bp.content,
                 views: bp.views.length,
                 createdAt: bp.createdAt,
-                lastedEdited: bp.lastEdited
+                lastedEdited: bp.lastEdited,
+                imageURL: bp.imageURL
 
               }
 

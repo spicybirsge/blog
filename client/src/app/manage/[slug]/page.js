@@ -17,6 +17,7 @@ export default function Page({ params }) {
     const[title, setTitle] = useState(null)
     const [description, setDescription] = useState(null)
     const [content, setContent] = useState(null)
+    const [imageURL, setImageURL] = useState(null)
 
     const router = useRouter()
     const [messageApi, contextHolder] = message.useMessage();
@@ -51,6 +52,7 @@ export default function Page({ params }) {
                 setTitle(response.data.title)
                 setDescription(response.data.description)
                 setContent(response.data.content)
+                setImageURL(response.data.imageURL)
                 return
 
             } else {
@@ -89,7 +91,8 @@ export default function Page({ params }) {
                 id: ID,
                 title: title,
                 description: description,
-                content: content
+                content: content,
+                image_url: imageURL
             })
         })
 
@@ -143,6 +146,8 @@ export default function Page({ params }) {
        <Input value={title} onChange={(e) => {setTitle(e.target.value)}}></Input>
        <Title level={3}>Blog Description</Title>
        <Input value={description} onChange={(e) => {setDescription(e.target.value)}}></Input>
+       <Title level={3}>Blog Thumbnail</Title>
+       <Input value={imageURL} onChange={(e) => {setImageURL(e.target.value)}}></Input>
         <Title level={3}>Blog Content</Title>
     <MDEditor
         value={content}

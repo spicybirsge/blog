@@ -38,10 +38,8 @@ export async function generateMetadata({ params, searchParams }, parent) {
           siteName: "Shaheer Ahamed's Blog",
           images: [
             {
-              url: '/logo.png',
-              width: 479,
-              height: 472 ,
-              alt: 'Logo',
+              url: response.data.imageURL,
+              
             },
           ],
           locale: 'en_US',
@@ -51,7 +49,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
           card: 'summary_large_image',
           title: response.data.title,
           description: response.data.description,
-          images: ['/logo.png'],
+          images: [response.data.imageURL],
         },
       };
 

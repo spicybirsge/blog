@@ -15,7 +15,12 @@ export default function PostCard(props) {
         ":visited": {
           color: "inherit",
         },
-      }}><Card hoverable bordered >
+      }}><Card hoverable bordered  cover={props.cover ?<img src={props.cover} style={{
+    
+        maxWidth: "100%",
+        maxHeight: "350px", 
+        objectFit: "cover" 
+      }}></img> : <></>}  >
          
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }}>
       <Avatar src={"/avatar.png"} size={25} />

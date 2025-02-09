@@ -7,7 +7,11 @@ const blogPosts = mongoose.Schema({
     content: String,
     views: Array,
     createdAt: Number,
-    lastEdited: Number
+    lastEdited: Number,
+    imageURL: {
+        type: String,
+        default: null
+    }
 })
 
 module.exports = mongoose.model("BlogPosts", blogPosts)

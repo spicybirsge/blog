@@ -68,10 +68,10 @@ const [messageApi, contextHolder] = message.useMessage();
     <Divider></Divider>
     <Title level={2} style={{"textAlign": "center"}}>Posts</Title>
     <Spin spinning={postFetching} size="large">
-    <Space direction="vertical" style={{"width" : "100%"}}>
-    {posts.map((blogpost)=> (<>
-      <PostCard  createdAt={blogpost.createdAt} title={blogpost.title} description={blogpost.description} loggedIn={isLoggedIn} id={blogpost._id} views={blogpost.views}></PostCard> </>
-    ) ) }{posts.length === 0 ? <Paragraph style={{"textAlign": "center"}}>No posts yet, come back later?</Paragraph> : <></>}</Space></Spin>
+    <> 
+    {posts.map((blogpost)=> (<Space direction="vertical" style={{"width" : "100%"}}>
+      <PostCard  cover={blogpost.imageURL} createdAt={blogpost.createdAt} title={blogpost.title} description={blogpost.description} loggedIn={isLoggedIn} id={blogpost._id} views={blogpost.views}></PostCard> </Space>
+    ) ) }{posts.length === 0 ? <Paragraph style={{"textAlign": "center"}}>No posts yet, come back later?</Paragraph> : <></>}</></Spin>
 
    </div></>;
 }

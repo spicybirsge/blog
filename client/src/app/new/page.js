@@ -16,6 +16,7 @@ export default function Page() {
     const[title, setTitle] = useState(null)
     const [description, setDescription] = useState(null)
     const [content, setContent] = useState(null)
+    const [imageURL, setImageURL] = useState(null)
 
     const router = useRouter()
     const [messageApi, contextHolder] = message.useMessage();
@@ -56,6 +57,9 @@ export default function Page() {
         if(!content) {
             return messageApi.error("content is required")
         }
+        if(!imageURL) {
+            return messageApi.error("blog thumbnail is required")
+        }
 
         setCreating(true)
 
@@ -69,7 +73,8 @@ export default function Page() {
             body: JSON.stringify({
                 title: title,
                 content: content,
-                description: description
+                description: description,
+                image_url: imageURL
             })
         })
 
@@ -93,6 +98,8 @@ export default function Page() {
        <Input value={title} onChange={(e) => {setTitle(e.target.value)}}></Input>
        <Title level={3}>Blog Description</Title>
        <Input value={description} onChange={(e) => {setDescription(e.target.value)}}></Input>
+       <Title level={3}>Blog Thumbnail</Title>
+       <Input value={imageURL} onChange={(e) => {setImageURL(e.target.value)}}></Input>
         <Title level={3}>Blog Content</Title>
         <div data-color-mode="light">
     <MDEditor

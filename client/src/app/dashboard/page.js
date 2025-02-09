@@ -80,7 +80,7 @@ export default function Page() {
         <Spin spinning={postFetching} size="large">
         <Space direction="vertical" style={{"width" : "100%"}}>
     {posts.map((blogpost)=> (<>
-      <PostCard createdAt={blogpost.createdAt} title={blogpost.title} description={blogpost.description} loggedIn={isLoggedIn} id={blogpost._id} views={blogpost.views}></PostCard> </>
+      <PostCard createdAt={blogpost.createdAt} title={blogpost.title} description={blogpost.description} cover={blogpost.imageURL} loggedIn={isLoggedIn} id={blogpost._id} views={blogpost.views}></PostCard> </>
     ) ) }</Space>{posts.length === 0 ? <Paragraph style={{"textAlign": "center"}}>No posts yet, create some?</Paragraph> : <></>}</Spin>
         </div></>
 }
