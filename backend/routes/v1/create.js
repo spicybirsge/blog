@@ -40,7 +40,7 @@ router.post("/blog", authorize , async(req, res) => {
         const webhookToken = process.env.WEBHOOK_URL;
 
         if(webhookToken) {
-            const webhookClient = new WebhookClient({ url: webhookToken, avatarURL: `https://cdn.discordapp.com/avatars/818903544723406858/fab5fad946feea36277f3c3e8b2cfe8f.png`, username: 'Shaheer' });
+            const webhookClient = new WebhookClient({ url: webhookToken});
             const url = `https://blog-shaheerahamed.vercel.app/posts/${ID}`
             webhookClient.send({content: `**New Post**\n${url}`})
         }
