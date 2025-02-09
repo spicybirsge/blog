@@ -76,9 +76,9 @@ if(value === "" || value === null) {
 
 
   setPosts(constantPosts.filter((post) => (
-    post.title.toLowerCase().includes(value) ||
-          post.description.toLowerCase().includes(value) ||
-          post.content.toLowerCase().includes(value)
+    post.title.toLowerCase().includes(value.toLowerCase()) ||
+          post.description.toLowerCase().includes(value.toLowerCase()) ||
+          post.content.toLowerCase().includes(value.toLowerCase())
   )))
 }
   
