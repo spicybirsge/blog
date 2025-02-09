@@ -20,7 +20,7 @@ export default function PostCard(props) {
         maxWidth: "100%",
         maxHeight: "350px", 
         objectFit: "cover" 
-      }}></img> : <></>}  >
+      }} loading="lazy"></img> : <></>}  >
          
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }}>
       <Avatar src={"/avatar.png"} size={25} />
