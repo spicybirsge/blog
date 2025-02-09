@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { authenticate } from "@/functions/authenticate";
 import LoadingComponent from "@/components/LoadingComponent";
 import Navbar from "@/components/NavBar";
-import {Typography,  Divider, Spin, message, Space} from 'antd'
+import {Typography,  Divider, Spin, message, Space, Input} from 'antd'
 const {Title, Paragraph, Text} = Typography;
 import './global.css'
 import PostCard from "@/components/PostCard";
@@ -12,9 +12,13 @@ import vars from "@/variables/vars";
 export default function Page() {
   const isLoaded = loaded((state) => state.loaded);
   const isLoggedIn = loggedIn((state) => state.loggedIn);
+  const[constantPosts, setConstantPosts] = useState([])
  const [posts, setPosts] = useState([])
-const [postFetching, setPostsFetching] = useState(true)
+
+const [postFetching, setPostsFetching] = useState(true);
+
 const [messageApi, contextHolder] = message.useMessage();
+
   useEffect(() => {
     try {
     if (!isLoaded) {
@@ -36,7 +40,9 @@ const [messageApi, contextHolder] = message.useMessage();
   
       if(response.success) {
         setPostsFetching(false)
+        setConstantPosts(response.data)
         setPosts(response.data)
+        
         return;
       } else {
         console.error(response.message)
@@ -60,6 +66,23 @@ const [messageApi, contextHolder] = message.useMessage();
     return <LoadingComponent/>
   }
 
+  const searchPosts =(value) => {
+
+if(value === "" || value === null) {
+
+  setPosts(constantPosts)
+  return;
+}
+
+
+  setPosts(constantPosts.filter((post) => (
+    post.title.toLowerCase().includes(value) ||
+          post.description.toLowerCase().includes(value) ||
+          post.content.toLowerCase().includes(value)
+  )))
+}
+  
+
   return <> {contextHolder}
   <div className="container">
  <Navbar loggedIn={isLoggedIn}></Navbar>
@@ -67,7 +90,9 @@ const [messageApi, contextHolder] = message.useMessage();
     <Paragraph>Hi I am Shaheer Ahamed a full-stack web and app developer. You can read my blog posts here. Want to contact me? message me through <a href="https://discord.com/users/818903544723406858" target="_blank">discord</a>.</Paragraph>
     <Divider></Divider>
     <Title level={2} style={{"textAlign": "center"}}>Posts</Title>
+    <Input placeholder="Type here to search" style={{marginBottom: "10px", maxWidth: "50%"}} onChange={(e) => {searchPosts(e.target.value)}}></Input>
     <Spin spinning={postFetching} size="large">
+      
     <> 
     {posts.map((blogpost)=> (<Space direction="vertical" style={{"width" : "100%"}}>
       <PostCard  cover={blogpost.imageURL} createdAt={blogpost.createdAt} title={blogpost.title} description={blogpost.description} loggedIn={isLoggedIn} id={blogpost._id} views={blogpost.views}></PostCard> </Space>
